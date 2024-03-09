@@ -1,15 +1,19 @@
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 public class Radio {
     private int currentStation;
     private int currentVolume;
-    private int maxStation;
+    private int stationLimit;
 
-    public Radio() {          //конструктор для задания максимального количества станций по умолчанию
-        this.maxStation = 10;
+    public Radio() {          //конструктор для задания количества станций по умолчанию
+        this.stationLimit = 10;
 
     }
 
-    public Radio(int maxStation) {    //конструктор для задания максимального количества станций
-        this.maxStation = maxStation;
+    public Radio(int stationLimit) {    //конструктор для задания количества станций
+        this.stationLimit = stationLimit;
     }
 
     public int getCurrentStation() {
@@ -24,7 +28,7 @@ public class Radio {
         if (newCurrentStation < 0) { //если меньше 0, то оставляем станцию как есть
             return;
         } else {
-            if (newCurrentStation >= maxStation) {
+            if (newCurrentStation >= stationLimit) {
                 return;
             } //если больше 9, то оставляем станцию как есть
             else {
@@ -35,7 +39,7 @@ public class Radio {
     }
 
     public void next() {  //описываем условия переключения станций вперед
-        if (currentStation == maxStation - 1) {
+        if (currentStation == stationLimit - 1) {
             currentStation = 0;
         } else {
             currentStation++;
@@ -44,7 +48,7 @@ public class Radio {
 
     public void prev() { //описываем условия переключения станций назад
         if (currentStation == 0) {
-            currentStation = maxStation - 1;
+            currentStation = stationLimit - 1;
         } else {
             currentStation--;
         }
