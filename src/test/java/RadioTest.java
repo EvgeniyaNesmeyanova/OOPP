@@ -73,12 +73,12 @@ public class RadioTest {
 
     @Test
     public void nextTest() {  //переключить на одну станцию вперед при установленном значении от 0 до 8
-        Radio station = new Radio();
+        Radio station = new Radio(30);
 
-        station.setCurrentStation(5);
+        station.setCurrentStation(28);
         station.next();
 
-        int expected = 6;
+        int expected = 29;
         int actual = station.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -86,9 +86,9 @@ public class RadioTest {
 
     @Test
     public void nextTestMax() { //переключить на одну станцию вперед при установленном граничном значении 9
-        Radio station = new Radio();
+        Radio station = new Radio(30);
 
-        station.setCurrentStation(9);
+        station.setCurrentStation(29);
         station.next();
 
         int expected = 0;

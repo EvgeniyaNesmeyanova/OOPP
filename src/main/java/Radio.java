@@ -1,6 +1,16 @@
 public class Radio {
     private int currentStation;
     private int currentVolume;
+    private int maxStation;
+
+    public Radio() {          //конструктор для задания максимального количества станций по умолчанию
+        this.maxStation = 10;
+
+    }
+
+    public Radio(int maxStation) {    //конструктор для задания максимального количества станций
+        this.maxStation = maxStation;
+    }
 
     public int getCurrentStation() {
         return currentStation;
@@ -14,7 +24,7 @@ public class Radio {
         if (newCurrentStation < 0) { //если меньше 0, то оставляем станцию как есть
             return;
         } else {
-            if (newCurrentStation > 9) {
+            if (newCurrentStation >= maxStation) {
                 return;
             } //если больше 9, то оставляем станцию как есть
             else {
@@ -25,7 +35,7 @@ public class Radio {
     }
 
     public void next() {  //описываем условия переключения станций вперед
-        if (currentStation == 9) {
+        if (currentStation == maxStation - 1) {
             currentStation = 0;
         } else {
             currentStation++;
@@ -34,7 +44,7 @@ public class Radio {
 
     public void prev() { //описываем условия переключения станций назад
         if (currentStation == 0) {
-            currentStation = 9;
+            currentStation = maxStation - 1;
         } else {
             currentStation--;
         }
